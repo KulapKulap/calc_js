@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body {
+            background-color: rgb(255, 255, 255);
+            user-select: none;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 4px;
+            background-color: rgb(0, 0, 0);
+            padding: 4px;
+            border-radius: 40px;
+            max-width: 350px;
+            font-family: Tahoma;
+        }
+        .item {
+            user-select: none;
+            background-color: rgb(53, 53, 53);
+            color: white;
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 50px;
+        }
+        form {
+            max-width: 100%;
+        }
+        input {
+            width: 100%;
+            height: 60px;
+            border: none;
+            font-size: 60px;
+            outline: none;
+            text-align: right;
+            color: black;
+        }
+        .input {
+            grid-column: 1/-1;
+            padding: 10%;
+            background-color: rgb(0, 0, 0);
+            border-radius: 100%;
+            color:rgb(0, 0, 0);
+            border-radius: 50px; 
+    
+        }
+        
+        .inputt {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+        }
+    
+        .clean {
+            grid-column: 1/3;
+            background-color: rgb(255, 191, 0);
+        }
+        .back {
+            grid-column: 3/-1;
+        }
+        .zero {
+            grid-column: 1/3;
+        }
+        .equal {
+            grid-column: 4;
+            grid-row: 6/8;
+            background-color:rgb(255, 191, 0) ;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <div class ="item input"><form name="form"><input type="text" name="textview" class="inputt" readonly></form></div>
+    <div class ="item clean" onclick="clean()">C</div>
+    <div class ="item back"onclick="back()">&larr;</div>
+    <div class ="item" onclick="insert('+')">+</div>
+    <div class ="item" onclick="insert('-')">-</div>
+    <div class ="item" onclick="insert('*')">&times</div>
+    <div class ="item" onclick="insert('/')">&divide</div>
+    <div class ="item" onclick="insert('7')">7</div>
+    <div class ="item" onclick="insert('8')">8</div>
+    <div class ="item" onclick="insert('9')">9</div>
+    <div class ="item" onclick="insert('(')">(</div>
+    <div class ="item" onclick="insert('4')">4</div>
+    <div class ="item" onclick="insert('5')">5</div>
+    <div class ="item" onclick="insert('6')">6</div>
+    <div class ="item" onclick="insert(')')">)</div>
+    <div class ="item" onclick="insert('1')">1</div>
+    <div class ="item" onclick="insert('2')">2</div>
+    <div class ="item" onclick="insert('3')">3</div>
+    <div class ="item equal" onclick="equal()">=</div>
+    <div class ="item zero" onclick="insert('0')">0</div>
+    <div class ="item" onclick="insert('.')">.</div>
+</div>
+
+<script>
+    function insert(num){
+        document.form.textview.value = document.form.textview.value + num;
+    }
+    function clean(){
+        document.form.textview.value = "";
+    }
+    function back(){
+        var exp = document.form.textview.value;
+        document.form.textview.value = exp.substring(0, exp.length-1);
+    }
+    function equal(){
+        var exp = document.form.textview.value;
+        if(exp){
+            document.form.textview.value = eval(exp);
+        }
+    }
+</script>
+</body>
+</html>
